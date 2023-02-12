@@ -9,7 +9,7 @@ cwd = cwd[:-6]
 
 def install_package(package):
     if package in packages:
-        url = "https://github.com/Blinken77YT/QuieraOS/" + package + ".zip"
+        url = "https://github.com/Blinken77YT/QuieraOS/tree/master/packages" + package + ".zip"
         filename = package + ".zip"
         file_path = os.path.join(f"{cwd}\\apps\\", filename)
         urllib.request.urlretrieve(url, file_path)
