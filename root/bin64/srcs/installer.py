@@ -1,23 +1,24 @@
 import argparse
 import urllib.request
-import os
+import os, shutil
 
 # define a list of packages
 packages = ["discord", "package2", "package3"]
 cwd = os.getcwd()
-cwd = cwd[:-6]
+cwd0 = cwd[:-6]
+
+import subprocess
 
 def install_package(package):
     if package in packages:
-        url = "https://github.com/Blinken77YT/QuieraOS/tree/master/packages" + package + ".zip"
-        filename = package + ".zip"
-        file_path = os.path.join(f"{cwd}\\apps\\", filename)
-        urllib.request.urlretrieve(url, file_path)
+        url = "https://github.com/Blinken77YT/QuieraOS/raw/master/packages/" + package + ".exe"
+        filename = package + ".exe"
+        urllib.request.urlretrieve(url=url, filename=filename)
         print(f"Downloading {package}")
         print(f"Installing {package}")
+        subprocess.run([filename, "--install"])
     else:
         print(f"{package} not found")
-
 
 # create a function to list all packages
 def list_packages():
